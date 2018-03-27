@@ -9,12 +9,12 @@ Construct TagExtractor Instance and do works with extractTagFromWebPage method o
 Simple text code is written in App.java
 
 ```
-    TagExtractor te = new TagExtractor();
-		List<String> tags = te.extractTagFromWebPage("https://redis.io/topics/quickstart"); // extract tags from web page
+TagExtractor te = new TagExtractor();
+List<String> tags = te.extractTagFromWebPage("https://redis.io/topics/quickstart"); // extract tags from web page
 
-		for(String tag : tags ){
-			System.out.println(tag); // print extracted tags
-		}
+for(String tag : tags ){
+  System.out.println(tag); // print extracted tags
+}
 ```
 
 
@@ -25,8 +25,6 @@ You need jars in libs folder as depedencies. And also need resoure file in res f
 ### Installing
 
 locate 'res' folder at project root path to read resource files under it.
-
-```
 
 ## Demo
 
@@ -49,8 +47,6 @@ spring
 * [[https://github.com/ceteri/textrank] - reference for implementing text rank algorithm
 * [TwitterKoreanText](https://github.com/twitter/twitter-korean-text) - to tokenize korean
 
-
 ## License
 
 As-is
-
