@@ -44,7 +44,7 @@ spring
 ## Built With
 
 * [jsoup](https://jsoup.org/) - to extract plain text from web page
-* [[https://github.com/ceteri/textrank] - reference for implementing text rank algorithm
+* [https://github.com/ceteri/textrank] - reference for implementing text rank algorithm
 * [TwitterKoreanText](https://github.com/twitter/twitter-korean-text) - to tokenize korean
 
 ## License
