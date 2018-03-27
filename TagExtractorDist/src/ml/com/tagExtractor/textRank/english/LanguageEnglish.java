@@ -33,6 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package ml.com.tagExtractor.textRank.english;
 
 import java.io.File;
+import java.io.IOException;
 
 import opennlp.tools.lang.english.ParserTagger;
 import opennlp.tools.lang.english.SentenceDetector;
@@ -88,7 +89,7 @@ public class
 	throws Exception
     {
 	if (splitter_en == null) {
-	    loadResources(path);
+	    //loadResources(path);
 	}
     }
 
@@ -97,9 +98,7 @@ public class
      * Load libraries for OpenNLP for this specific language.
      */
 
-    public void
-	loadResources (final String path)
-	throws Exception
+    static
     {
 	splitter_en = new SentParDetector();
 
@@ -108,14 +107,22 @@ public class
 		new SentenceDetector((new File(path, "opennlp/EnglishSD.bin.gz")).getPath());
 	/* */
 
-	tokenizer_en =
-	    new Tokenizer((new File(path, "opennlp/EnglishTok.bin.gz")).getPath());
+	try {
+		tokenizer_en =
+		    new Tokenizer((new File(TextRankEnglish.resPath, "en/opennlp/EnglishTok.bin.gz")).getPath());
+		
+		tagger_en =
+			    new ParserTagger((new File(TextRankEnglish.resPath, "en/opennlp/tag.bin.gz")).getPath(),
+					     (new File(TextRankEnglish.resPath, "en/opennlp/tagdict")).getPath(),
+					     false
+					     );
+		
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
-	tagger_en =
-	    new ParserTagger((new File(path, "opennlp/tag.bin.gz")).getPath(),
-			     (new File(path, "opennlp/tagdict")).getPath(),
-			     false
-			     );
+	
 
 	stemmer_en =
 	    new englishStemmer();

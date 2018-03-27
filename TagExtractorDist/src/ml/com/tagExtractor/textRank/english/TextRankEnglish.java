@@ -102,7 +102,7 @@ public class
     /**
      * 
      * */
-    private static String resPath = "res";
+    public static String resPath = "res";
 
     /**
      * Constructor.

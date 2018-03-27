@@ -83,10 +83,10 @@ public abstract class
      * Load libraries for OpenNLP for this specific language.
      */
 
-    public abstract void
+/*    public abstract void
 	loadResources (final String path)
 	throws Exception
-	;
+	;*/
 
 
     /**
