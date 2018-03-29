@@ -34,18 +34,17 @@ package ml.com.tagExtractor.textRank.english;
 
 import java.io.File;
 import java.io.IOException;
-
-import opennlp.tools.lang.english.ParserTagger;
-import opennlp.tools.lang.english.SentenceDetector;
-import opennlp.tools.lang.english.Tokenizer;
-import opennlp.tools.sentdetect.SentenceDetectorME;
-import opennlp.tools.util.Sequence;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.tartarus.snowball.ext.englishStemmer;
 
+import ml.com.tagExtractor.util.ClassPathResourceUtil;
+import opennlp.tools.lang.english.ParserTagger;
+import opennlp.tools.lang.english.Tokenizer;
+import opennlp.tools.util.Sequence;
 import spiaotools.SentParDetector;
 
 
@@ -106,8 +105,19 @@ public class
 	splitter_en =
 		new SentenceDetector((new File(path, "opennlp/EnglishSD.bin.gz")).getPath());
 	/* */
-
+	
+	
+	
 	try {
+		
+		
+		tokenizer_en = new Tokenizer(ClassPathResourceUtil.toFile(TextRankEnglish.resPath + "/en/opennlp/EnglishTok.bin.gz").getPath());
+		tagger_en = new ParserTagger(
+				ClassPathResourceUtil.toFile(TextRankEnglish.resPath + "/en/opennlp/tag.bin.gz").getPath()
+				,ClassPathResourceUtil.toFile(TextRankEnglish.resPath + "/en/opennlp/tagdict").getPath()
+				,false);
+		
+		/*
 		tokenizer_en =
 		    new Tokenizer((new File(TextRankEnglish.resPath, "en/opennlp/EnglishTok.bin.gz")).getPath());
 		
@@ -115,9 +125,12 @@ public class
 			    new ParserTagger((new File(TextRankEnglish.resPath, "en/opennlp/tag.bin.gz")).getPath(),
 					     (new File(TextRankEnglish.resPath, "en/opennlp/tagdict")).getPath(),
 					     false
-					     );
+					     );*/
 		
 	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (URISyntaxException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

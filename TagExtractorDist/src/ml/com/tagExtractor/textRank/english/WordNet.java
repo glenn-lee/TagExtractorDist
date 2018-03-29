@@ -57,6 +57,8 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.jdom.xpath.XPath;
 
+import ml.com.tagExtractor.util.ClassPathResourceUtil;
+
 
 /**
  * Access to WordNet through JWNL.
@@ -123,7 +125,8 @@ public class
     {
 	// load the config file as an XML document
 
-	final File xml_file = new File(resource_path, cfg_file_name);
+    
+	final File xml_file = ClassPathResourceUtil.toFile(resource_path + "/" + cfg_file_name);
 	final FileReader file_reader = new FileReader(xml_file);
 	final BufferedReader buf_reader = new BufferedReader(file_reader);
 	final SAXBuilder sax_builder = new SAXBuilder(false);
@@ -137,7 +140,7 @@ public class
 
 	final XPath xpath = XPath.newInstance(query.toString());
 	final Element path_node = (Element) xpath.selectSingleNode(document);
-	final File wn_dir = new File(resource_path, wn_dir_name);
+	final File wn_dir = ClassPathResourceUtil.toFile(resource_path +"/"+ wn_dir_name);
 	path_node.setAttribute("value", wn_dir.getPath());
 
 	// write the XML document as a stream

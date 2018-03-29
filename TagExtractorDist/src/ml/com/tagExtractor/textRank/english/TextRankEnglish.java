@@ -103,7 +103,7 @@ public class
      * 
      * */
     public static String resPath = "res";
-
+    ///TagExtractorDist/src/main/resources/res/en/opennlp/EnglishTok.bin.gz
     /**
      * Constructor.
      */
@@ -461,12 +461,9 @@ public class
     public List<RankPair> rank(String text) {
     	
     	try {
-    		
-    		
-    		
-    		
+
     		text = EnglishTextFilter.filter(text);
-    		
+
 			prepCall(text, true);
 			
 			final FutureTask<Collection<MetricVector>> task = new FutureTask<Collection<MetricVector>>(this);

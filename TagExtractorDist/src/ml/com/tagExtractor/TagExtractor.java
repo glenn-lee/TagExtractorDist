@@ -45,8 +45,9 @@ public class TagExtractor {
 	
 	private void narrowToTop10(List<RankPair> tags) {
 		if(tags != null) {
+			int size = tags.size();
 			if(tags.size()>10) {
-				for(int i=9; i < tags.size(); i++) {
+				for(int i=size-1; i > 9; i--) {
 					tags.remove(i);
 				}
 				

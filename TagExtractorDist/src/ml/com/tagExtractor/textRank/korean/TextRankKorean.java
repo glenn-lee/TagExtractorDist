@@ -400,7 +400,7 @@ public class
 
     	for (MetricVector mv : key_phrase_list) {
     	    if (mv.metric >= MIN_NORMALIZED_RANK) {
-    	    	RankPair rp = new RankPair(mv.metric, mv.value.text);
+    	    	RankPair rp = new RankPair(mv.metric, mv.value.text.replaceAll("\\s+","")); // remove blank space between two word, korean only
     	    	tags.add(rp);
     	    }
     	}

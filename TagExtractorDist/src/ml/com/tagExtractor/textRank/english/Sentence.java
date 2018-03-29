@@ -126,7 +126,7 @@ public class
 		LOG.debug("token: " + token_list[i] + " pos tag: " + pos);
 	    }
 
-	    if (lang.isRelevant(pos)) {
+	    if (lang.isRelevant(pos) && token_list[i].length() > 1 ) {
 		final String key = lang.getNodeKey(token_list[i], pos);
 		final KeyWord value = new KeyWord(token_list[i], pos);
 		final Node n = Node.buildNode(graph, key, value);
