@@ -110,8 +110,8 @@ public class
     
     static {
     	try {
-			lang = LanguageModel.buildLanguage(resPath, "en");
-			WordNet.buildDictionary(resPath, "en");
+			lang = LanguageModel.buildLanguage();
+			WordNet.buildDictionary();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

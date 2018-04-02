@@ -65,16 +65,11 @@ public abstract class
      */
 
     public static LanguageModel
-	buildLanguage (final String resource_path, final String lang_code)
+	buildLanguage ()
 	throws Exception
     {
 	LanguageModel lang = null;
-
-	if ("en".equals(lang_code)) {
-	    lang = new LanguageEnglish(resource_path + "/" + lang_code);
-	}
-
-
+	lang = new LanguageEnglish("en");
 	return lang;
     }
 

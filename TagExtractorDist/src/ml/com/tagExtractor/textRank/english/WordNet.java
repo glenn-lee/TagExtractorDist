@@ -88,14 +88,14 @@ public class
      */
 
     public static void
-	buildDictionary (final String res_path, final String lang_code)
+	buildDictionary ()
 	throws Exception
     {
 	// initialize the JWNL properties
 
 	if (!JWNL.isInitialized()) {
 	    final String model_path =
-		res_path + "/" + lang_code;
+		"en";
 
 	    final InputStream propertiesStream =
 		buildPropertiesStream("wn_file_props.xml",
@@ -120,13 +120,13 @@ public class
      */
 
     protected static InputStream
-	buildPropertiesStream (final String cfg_file_name, final String query_string, final String resource_path, final String wn_dir_name)
+	buildPropertiesStream (final String cfg_file_name, final String query_string, final String model_path, final String wn_dir_name)
 	throws Exception
     {
 	// load the config file as an XML document
 
     
-	final File xml_file = ClassPathResourceUtil.toFile(resource_path + "/" + cfg_file_name);
+	final File xml_file = ClassPathResourceUtil.getFile(model_path + "/" + cfg_file_name);
 	final FileReader file_reader = new FileReader(xml_file);
 	final BufferedReader buf_reader = new BufferedReader(file_reader);
 	final SAXBuilder sax_builder = new SAXBuilder(false);
@@ -140,7 +140,7 @@ public class
 
 	final XPath xpath = XPath.newInstance(query.toString());
 	final Element path_node = (Element) xpath.selectSingleNode(document);
-	final File wn_dir = ClassPathResourceUtil.toFile(resource_path +"/"+ wn_dir_name);
+	final File wn_dir = ClassPathResourceUtil.getFile(model_path +"/"+ wn_dir_name);
 	path_node.setAttribute("value", wn_dir.getPath());
 
 	// write the XML document as a stream

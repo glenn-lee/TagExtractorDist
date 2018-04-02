@@ -87,9 +87,7 @@ public class
 	LanguageEnglish (final String path)
 	throws Exception
     {
-	if (splitter_en == null) {
-	    //loadResources(path);
-	}
+
     }
 
 
@@ -111,10 +109,10 @@ public class
 	try {
 		
 		
-		tokenizer_en = new Tokenizer(ClassPathResourceUtil.toFile(TextRankEnglish.resPath + "/en/opennlp/EnglishTok.bin.gz").getPath());
+		tokenizer_en = new Tokenizer(ClassPathResourceUtil.getFile("/en/opennlp/EnglishTok.bin.gz").getPath());
 		tagger_en = new ParserTagger(
-				ClassPathResourceUtil.toFile(TextRankEnglish.resPath + "/en/opennlp/tag.bin.gz").getPath()
-				,ClassPathResourceUtil.toFile(TextRankEnglish.resPath + "/en/opennlp/tagdict").getPath()
+				ClassPathResourceUtil.getFile("/en/opennlp/tag.bin.gz").getPath()
+				,ClassPathResourceUtil.getFile("/en/opennlp/tagdict").getPath()
 				,false);
 		
 		/*
